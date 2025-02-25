@@ -1,42 +1,28 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');  // To load environment variables from .env
 const app = express();
+
+// Load environment variables from .env file
+dotenv.config();
 
 // Setup view engine and static files directory
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Environment Variables for PayPal Product IDs
+// PayPal Environment Variables
+const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID; // Set in Render or local .env file
 const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID; // Set in Render or local .env file
 const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID; // Set in Render or local .env file
 
-// Routes for the footer pages
+// Route to render index page
 app.get('/', (req, res) => {
   res.render('index', {
+    PAYPAL_MERCHANT_ID: PAYPAL_MERCHANT_ID,
     PRODUCT_1_ID: PRODUCT_1_ID,
     PRODUCT_2_ID: PRODUCT_2_ID
   });
-});
-
-app.get('/contact', (req, res) => {
-  res.render('contact', { email: 'kablekonnexions@gmail.com' });
-});
-
-app.get('/shipping', (req, res) => {
-  res.render('shipping');
-});
-
-app.get('/terms', (req, res) => {
-  res.render('terms');
-});
-
-app.get('/refunds', (req, res) => {
-  res.render('refunds');
-});
-
-app.get('/privacy', (req, res) => {
-  res.render('privacy');
 });
 
 // Server configuration
