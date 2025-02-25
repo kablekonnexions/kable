@@ -1,64 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayPal Integration</title>
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- Add PayPal cart script -->
-    <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Android TV Boxes with IPTV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    .product-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .product-card h2 {
+      font-size: 24px;
+      margin: 15px 0 10px;
+    }
+    .product-card p {
+      font-size: 16px;
+      color: #666;
+    }
+    .product-card .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin: 15px 0;
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      width: 100%;
+    }
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header with title -->
-        <header>
-            <h1>PayPal Integration</h1>
-            <p>Choose your products and add them to the cart!</p>
-        </header>
 
-        <!-- Product 1 -->
-        <div class="product">
-            <img src="https://via.placeholder.com/300x300" alt="Product 1">
-            <h2>Product 1</h2>
-            <p class="description">This is a great product that you'll love. It has all the features you need for a great experience!</p>
-            <p class="price">₹5000</p>
-            <button class="add-to-cart" onclick="addToCart('<%= PRODUCT_1_ID %>')">Add to Cart</button>
-        </div>
+  <h1>Our Android TV Boxes with IPTV</h1>
 
-        <!-- Product 2 -->
-        <div class="product">
-            <img src="https://via.placeholder.com/300x300" alt="Product 2">
-            <h2>Product 2</h2>
-            <p class="description">This product offers even more amazing features to help you with your daily needs. Perfect for everyone!</p>
-            <p class="price">₹10000</p>
-            <button class="add-to-cart" onclick="addToCart('<%= PRODUCT_2_ID %>')">Add to Cart</button>
-        </div>
-
-        <!-- View Cart Button -->
-        <div class="view-cart">
-            <p>View Cart</p>
-            <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-            <script>
-                cartPaypal.Cart({ id: "pp-view-cart" });
-            </script>
-        </div>
+  <div class="product-container">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x300?text=Android+TV+Box+1" alt="Android TV Box 1">
+      <h2>Android TV Box X1</h2>
+      <p>High-performance Android TV box with pre-installed IPTV apps. Supports 4K streaming and comes with a remote control.</p>
+      <p class="price">₹5,999.00</p>
+      <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
     </div>
 
-    <!-- Footer with policies -->
-    <footer>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a> | 
-            <a href="#">Terms & Conditions</a> | 
-            <a href="#">Return Policy</a>
-        </div>
-    </footer>
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/300x300?text=Android+TV+Box+2" alt="Android TV Box 2">
+      <h2>Android TV Box X2</h2>
+      <p>Advanced Android TV box with dual-band Wi-Fi, 4GB RAM, and 64GB storage. Perfect for IPTV and gaming.</p>
+      <p class="price">₹8,499.00</p>
+      <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
+    </div>
+  </div>
 
-    <!-- Add PayPal cart logic -->
-    <script>
-        function addToCart(productId) {
-            cartPaypal.AddToCart({ id: productId });
-        }
-    </script>
+  <!-- PayPal Button for Viewing Cart -->
+  <div id="paypal-button-container"></div>
+
+  <!-- Footer with links -->
+  <footer>
+    <p>
+      <a href="/contact.html">Contact Us</a> |
+      <a href="/shipping.html">Shipping Policy</a> |
+      <a href="/terms.html">Terms and Conditions</a> |
+      <a href="/refunds.html">Cancellations and Refunds</a> |
+      <a href="/privacy.html">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <!-- PayPal SDK Script -->
+  <script>
+    fetch('/api/paypal-config')
+      .then(response => response.json())
+      .then(config => {
+        const script = document.createElement('script');
+        script.src = `https://www.paypal.com/sdk/js?merchant-id=${config.merchantId}&currency=USD`;
+        document.head.appendChild(script);
+      })
+      .catch(error => console.error('Error loading PayPal SDK:', error));
+  </script>
 </body>
 </html>
