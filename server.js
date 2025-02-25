@@ -11,7 +11,7 @@ app.set("views", path.join(__dirname, "views"));
 
 // Render the page with the PayPal Merchant ID
 app.get("/", (req, res) => {
-    res.render("index", { PAYPAL_MERCHANT_ID });
+    res.render("index", { PAYPAL_MERCHANT_ID });  // This passes the variable to the template
 });
 
 app.listen(3000, () => {

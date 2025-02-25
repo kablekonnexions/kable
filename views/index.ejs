@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PayPal Integration</title>
-  <!-- Add PayPal cart script -->
-  <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Integration</title>
+
+    <!-- Add PayPal cart script -->
+    <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
+
 </head>
 <body>
-  <!-- View Cart button (usually at the top or navigation) -->
-  <div class="view-cart">
-    <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-    <script>
-      cartPaypal.Cart({ id: "pp-view-cart" });
-    </script>
-  </div>
+    <!-- View Cart button (usually at the top or navigation) -->
+    <div>
+        <p>View Cart</p>
+        <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+        <script>
+          cartPaypal.Cart({ id: "pp-view-cart" });
+        </script>
+    </div>
 
-  <!-- Product Section -->
-  <div class="product">
-    <h2>Product 1</h2>
-    <p>Description of product 1</p>
-    <p>Price: ₹1000</p>
-    
-    <!-- Add to Cart button for product 1 -->
-    <paypal-add-to-cart-button data-id="pp-add-to-cart-product-1"></paypal-add-to-cart-button>
-    <script>
-      cartPaypal.AddToCart({ id: "pp-add-to-cart-product-1" });
-    </script>
-  </div>
+    <!-- Add to Cart button (near the product) -->
+    <div>
+        <h2>Product 1</h2>
+        <p>Price: ₹5000</p>
+        <p>Click to add to cart</p>
 
-  <div class="product">
-    <h2>Product 2</h2>
-    <p>Description of product 2</p>
-    <p>Price: ₹2000</p>
-    
-    <!-- Add to Cart button for product 2 -->
-    <paypal-add-to-cart-button data-id="pp-add-to-cart-product-2"></paypal-add-to-cart-button>
-    <script>
-      cartPaypal.AddToCart({ id: "pp-add-to-cart-product-2" });
-    </script>
-  </div>
-  
+        <paypal-add-to-cart-button data-id="pp-add-to-cart-product1"></paypal-add-to-cart-button>
+        <script>
+          cartPaypal.AddToCart({ id: "pp-add-to-cart-product1" });
+        </script>
+    </div>
+
+    <!-- Add another product (you can replicate this for more products) -->
+    <div>
+        <h2>Product 2</h2>
+        <p>Price: ₹10000</p>
+        <p>Click to add to cart</p>
+
+        <paypal-add-to-cart-button data-id="pp-add-to-cart-product2"></paypal-add-to-cart-button>
+        <script>
+          cartPaypal.AddToCart({ id: "pp-add-to-cart-product2" });
+        </script>
+    </div>
+
 </body>
 </html>
