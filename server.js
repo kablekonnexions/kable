@@ -7,17 +7,24 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// PayPal Environment Variables (directly from Render environment)
-const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID; // Set in Render's environment variables
-const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID; // Set in Render's environment variables
-const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID; // Set in Render's environment variables
+// Environment Variables for PayPal Product IDs and Merchant ID
+const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID; // Set in Render or local .env file
+const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID; // Set in Render or local .env file
+const MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID;   // Set in Render or local .env file
 
 // Route to render index page
 app.get('/', (req, res) => {
   res.render('index', {
-    PAYPAL_MERCHANT_ID: PAYPAL_MERCHANT_ID,
     PRODUCT_1_ID: PRODUCT_1_ID,
-    PRODUCT_2_ID: PRODUCT_2_ID
+    PRODUCT_2_ID: PRODUCT_2_ID,
+    MERCHANT_ID: MERCHANT_ID
+  });
+});
+
+// Route to serve PayPal configuration (merchantId)
+app.get('/api/paypal-config', (req, res) => {
+  res.json({
+    merchantId: MERCHANT_ID,
   });
 });
 

@@ -73,7 +73,7 @@
 </head>
 <body>
 
-  <h1>Our Android TV Boxes with IPTV</h1>
+  <h1>Our Android TV Boxes</h1>
 
   <div class="product-container">
     <!-- Product 1 -->
@@ -119,7 +119,7 @@
         const script = document.createElement('script');
         script.src = `https://www.paypal.com/sdk/js?merchant-id=${config.merchantId}&currency=USD&components=buttons`;
         script.onload = function() {
-          // Render PayPal Buttons for both products
+          // Render PayPal Buttons for both products after script is loaded
           renderPaypalButtons();
         };
         document.head.appendChild(script);
