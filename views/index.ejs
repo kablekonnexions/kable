@@ -4,47 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PayPal Integration</title>
+    <link rel="stylesheet" href="/style.css">
 
     <!-- Add PayPal cart script -->
     <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
-
 </head>
 <body>
-    <!-- View Cart button (usually at the top or navigation) -->
-    <div>
-        <p>View Cart</p>
-        <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-        <script>
-          // Initialize the cart with an empty state (no default product)
-          cartPaypal.Cart({ id: "pp-view-cart" });
-        </script>
+    <div class="container">
+        <!-- Header with title -->
+        <header>
+            <h1>PayPal Integration</h1>
+            <p>Choose your products and add them to the cart!</p>
+        </header>
+
+        <!-- Product 1 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/300x300" alt="Product 1">
+            <h2>Product 1</h2>
+            <p class="description">This is a great product that you'll love. It has all the features you need for a great experience!</p>
+            <p class="price">₹5000</p>
+            <button class="add-to-cart" onclick="addToCart('<%= PRODUCT_1_ID %>')">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/300x300" alt="Product 2">
+            <h2>Product 2</h2>
+            <p class="description">This product offers even more amazing features to help you with your daily needs. Perfect for everyone!</p>
+            <p class="price">₹10000</p>
+            <button class="add-to-cart" onclick="addToCart('<%= PRODUCT_2_ID %>')">Add to Cart</button>
+        </div>
+
+        <!-- View Cart Button -->
+        <div class="view-cart">
+            <p>View Cart</p>
+            <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+            <script>
+                cartPaypal.Cart({ id: "pp-view-cart" });
+            </script>
+        </div>
     </div>
 
-    <!-- Add to Cart button for Product 1 -->
-    <div>
-        <h2>Product 1</h2>
-        <p>Price: ₹5000</p>
-        <p>Click to add to cart</p>
+    <!-- Footer with policies -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a> | 
+            <a href="#">Return Policy</a>
+        </div>
+    </footer>
 
-        <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
-        <script>
-          // Only add Product 1 when the button is clicked
-          cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
-        </script>
-    </div>
-
-    <!-- Add to Cart button for Product 2 -->
-    <div>
-        <h2>Product 2</h2>
-        <p>Price: ₹10000</p>
-        <p>Click to add to cart</p>
-
-        <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
-        <script>
-          // Only add Product 2 when the button is clicked
-          cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
-        </script>
-    </div>
-
+    <!-- Add PayPal cart logic -->
+    <script>
+        function addToCart(productId) {
+            cartPaypal.AddToCart({ id: productId });
+        }
+    </script>
 </body>
 </html>
