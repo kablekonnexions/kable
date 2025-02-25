@@ -7,7 +7,6 @@
 
     <!-- Add PayPal cart script -->
     <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
-
 </head>
 <body>
     <!-- View Cart button (usually at the top or navigation) -->
@@ -19,27 +18,27 @@
         </script>
     </div>
 
-    <!-- Add to Cart button (near the product) -->
+    <!-- Add to Cart button for Product 1 -->
     <div>
         <h2>Product 1</h2>
         <p>Price: ₹5000</p>
         <p>Click to add to cart</p>
 
-        <paypal-add-to-cart-button data-id="pp-add-to-cart-product1"></paypal-add-to-cart-button>
+        <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
         <script>
-          cartPaypal.AddToCart({ id: "pp-add-to-cart-product1" });
+          cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
         </script>
     </div>
 
-    <!-- Add another product (you can replicate this for more products) -->
+    <!-- Add to Cart button for Product 2 -->
     <div>
         <h2>Product 2</h2>
         <p>Price: ₹10000</p>
         <p>Click to add to cart</p>
 
-        <paypal-add-to-cart-button data-id="pp-add-to-cart-product2"></paypal-add-to-cart-button>
+        <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
         <script>
-          cartPaypal.AddToCart({ id: "pp-add-to-cart-product2" });
+          cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
         </script>
     </div>
 
