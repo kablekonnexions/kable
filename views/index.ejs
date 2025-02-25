@@ -40,29 +40,37 @@
     <div class="product-container">
         <!-- Product 1 -->
         <div class="product">
-            <img src="https://github.com/kablekonnexions/kable/blob/main/public/Images/box%202.jpg?raw=true" alt="Android Box 1 Image">
-            <h2>Android Box 1</h2>
-            <p class="price">Price: ₹5000</p>
-            <p class="description"><strong>Description:</strong> Advanced Android TV box with dual-band Wi-Fi, 4GB RAM, and 64GB storage. Perfect for IPTV and gaming.</p>
-            <div class="paypal-button">
-                <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
-                <script>
-                  cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
-                </script>
+            <div class="product-box">
+                <img src="https://github.com/kablekonnexions/kable/blob/main/public/Images/box%202.jpg?raw=true" alt="Android Box 1 Image" class="product-image">
+                <div class="product-info">
+                    <h2>Android Box 1</h2>
+                    <p class="price">Price: ₹5000</p>
+                    <p class="description"><strong>Description:</strong> Advanced Android TV box with dual-band Wi-Fi, 4GB RAM, and 64GB storage. Perfect for IPTV and gaming.</p>
+                    <div class="paypal-button">
+                        <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
+                        <script>
+                          cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
+                        </script>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Product 2 -->
         <div class="product">
-            <img src="https://github.com/kablekonnexions/kable/blob/main/public/Images/box%201.jpg?raw=true" alt="Android Box 2 Image">
-            <h2>Android Box 2</h2>
-            <p class="price">Price: ₹10000</p>
-            <p class="description"><strong>Description:</strong> High-performance Android TV box with pre-installed IPTV apps. Supports 4K streaming and comes with a remote control.</p>
-            <div class="paypal-button">
-                <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
-                <script>
-                  cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
-                </script>
+            <div class="product-box">
+                <img src="https://github.com/kablekonnexions/kable/blob/main/public/Images/box%201.jpg?raw=true" alt="Android Box 2 Image" class="product-image">
+                <div class="product-info">
+                    <h2>Android Box 2</h2>
+                    <p class="price">Price: ₹10000</p>
+                    <p class="description"><strong>Description:</strong> High-performance Android TV box with pre-installed IPTV apps. Supports 4K streaming and comes with a remote control.</p>
+                    <div class="paypal-button">
+                        <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
+                        <script>
+                          cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
+                        </script>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
