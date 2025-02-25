@@ -1,25 +1,29 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
+require('dotenv').config(); // This is for reading the .env file if you are using it locally
 const app = express();
 
-// Access product information from environment variables
-const PRODUCT_1_ID = process.env.PRODUCT_1_ID;
-const PRODUCT_2_ID = process.env.PRODUCT_2_ID;
-const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID;
+// Setup view engine and static files directory
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Set up EJS view engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// Environment Variables for PayPal Product IDs and Merchant ID
+const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID;  // Set in Render or local .env file
+const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID;  // Set in Render or local .env file
+const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID; // Set in Render or local .env file
 
-// Render the page with the PayPal Merchant ID and product IDs
-app.get("/", (req, res) => {
-    res.render("index", { 
-        PAYPAL_MERCHANT_ID, 
-        PRODUCT_1_ID, 
-        PRODUCT_2_ID
-    });
+// Route to render index page
+app.get('/', (req, res) => {
+  res.render('index', {
+    PRODUCT_1_ID: PRODUCT_1_ID,
+    PRODUCT_2_ID: PRODUCT_2_ID,
+    PAYPAL_MERCHANT_ID: PAYPAL_MERCHANT_ID
+  });
 });
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+// Server configuration
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

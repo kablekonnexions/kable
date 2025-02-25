@@ -70,10 +70,12 @@
       text-decoration: underline;
     }
   </style>
+  <!-- Load PayPal Cart SDK -->
+  <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
 </head>
 <body>
 
-  <h1>Our Android TV Boxes</h1>
+  <h1>Our Android TV Boxes with IPTV</h1>
 
   <div class="product-container">
     <!-- Product 1 -->
@@ -85,6 +87,9 @@
       
       <!-- PayPal Add to Cart Button for Product 1 -->
       <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
+      <script>
+        cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
+      </script>
     </div>
 
     <!-- Product 2 -->
@@ -96,11 +101,19 @@
       
       <!-- PayPal Add to Cart Button for Product 2 -->
       <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
+      <script>
+        cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
+      </script>
     </div>
   </div>
 
-  <!-- PayPal Button for Viewing Cart -->
-  <div id="paypal-button-container"></div>
+  <!-- PayPal View Cart Button -->
+  <div id="paypal-view-cart-container">
+    <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+    <script>
+      cartPaypal.Cart({ id: "pp-view-cart" });
+    </script>
+  </div>
 
   <!-- Footer with links -->
   <footer>
@@ -112,39 +125,6 @@
       <a href="/privacy.html">Privacy Policy</a>
     </p>
   </footer>
-
-  <!-- PayPal SDK Script -->
-  <script>
-    fetch('/api/paypal-config')
-      .then(response => response.json())
-      .then(config => {
-        const script = document.createElement('script');
-        script.src = `https://www.paypal.com/sdk/js?merchant-id=${config.merchantId}&currency=USD&components=buttons`;
-        script.onload = function() {
-          // Initialize PayPal buttons
-          paypal.Buttons({
-            createOrder: function(data, actions) {
-              return actions.order.create({
-                purchase_units: [{
-                  reference_id: "<%= PRODUCT_1_ID %>", // Product ID for Product 1
-                  amount: {
-                    currency_code: "USD", // Currency code
-                    value: "5.99" // Static price handled by PayPal
-                  }
-                }]
-              });
-            },
-            onApprove: function(data, actions) {
-              return actions.order.capture().then(function(details) {
-                alert('Transaction completed by ' + details.payer.name.given_name);
-              });
-            }
-          }).render('#paypal-button-container');
-        };
-        document.head.appendChild(script);
-      })
-      .catch(error => console.error('Error loading PayPal SDK:', error));
-  </script>
 
 </body>
 </html>
