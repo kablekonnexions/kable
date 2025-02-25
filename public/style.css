@@ -114,7 +114,7 @@ header p {
 /* Footer styles */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     background-color: #222;
     color: white;
     margin-top: 50px;
@@ -129,4 +129,11 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Grey background sections */
+.grey-section {
+    background-color: #f4f4f4; /* Grey background */
+    padding: 20px; /* Adjust padding for content spacing */
+    margin-bottom: 20px; /* Adds spacing between sections */
 }
