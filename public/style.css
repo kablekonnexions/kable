@@ -37,70 +37,67 @@ header p {
 
 /* Product container */
 .product {
-    display: block; /* Changed from inline-block to block */
-    width: 100%; /* Adjusted width for better fit */
-    margin: 20px auto; /* Centered horizontally */
-    padding: 0; /* Removed padding */
+    display: inline-block; /* Changed to inline-block for side-by-side layout */
+    width: 45%; /* Adjusted width for better fit */
+    margin: 20px 2.5%; /* Added margin for spacing between products */
+    padding: 20px;
     text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 /* Product box */
 .product-box {
-    width: 300px; /* Fixed width */
-    height: 300px; /* Fixed height */
+    width: 100%; /* Adjusted width to fit the product container */
+    height: auto; /* Adjusted height to fit content */
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+    box-shadow: none; /* Removed box-shadow */
+    border-radius: none; /* Removed border-radius */
+    display: block; /* Changed to block layout */
 }
 
 /* Product image */
 .product-image {
-    width: 100px; /* Adjusted width to fit within the box */
-    height: 100px; /* Adjusted height to fit within the box */
+    width: 100%;
+    height: 200px; /* Adjusted height for better fit */
     object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 20px; /* Added spacing below the image */
 }
 
 /* Product info */
 .product-info {
     text-align: center;
-    padding: 10px;
-    width: 100%; /* Ensure it takes full width of the product box */
 }
 
 .product-info h2 {
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .product-info .price {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .product-info .description {
-    font-size: 12px;
+    font-size: 14px;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     word-wrap: break-word; /* Ensure text wraps to the next line */
 }
 
 /* Add to cart button */
 .add-to-cart {
-    padding: 5px 10px;
+    padding: 10px 20px;
     background-color: #0070ba;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
@@ -137,6 +134,6 @@ footer a:hover {
 /* Grey background sections */
 .grey-section {
     background-color: #f4f4f4; /* Grey background */
-    padding: 20px; /* Adjust padding for content spacing */
-    margin-bottom: 20px; /* Adds spacing between sections */
+    padding: 10px; /* Adjust padding for content spacing */
+    margin-bottom: 10px; /* Adds spacing between sections */
 }
