@@ -1,26 +1,27 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 const app = express();
 
-// Set up static files and view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
+// Access product IDs from Render environment variables
+const PRODUCT_1_ID = process.env.PRODUCT_1_ID;
+const PRODUCT_2_ID = process.env.PRODUCT_2_ID;
 
-// Environment variables from Render (you do not need .env file if using Render's settings)
-const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID;
-const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID;
+// Access the PayPal Merchant ID (if it's set in environment)
+const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID;
 
-// Route to render index page
-app.get('/', (req, res) => {
-  res.render('index', {
-    PRODUCT_1_ID: PRODUCT_1_ID,
-    PRODUCT_2_ID: PRODUCT_2_ID
-  });
+// Set up EJS view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// Render the page with the PayPal Merchant ID and product IDs
+app.get("/", (req, res) => {
+    res.render("index", { 
+        PAYPAL_MERCHANT_ID, 
+        PRODUCT_1_ID, 
+        PRODUCT_2_ID 
+    });
 });
 
-// Server configuration
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
 });
