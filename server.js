@@ -22,6 +22,27 @@ app.get("/", (req, res) => {
     });
 });
 
+// Routes for other pages
+app.get("/contact", (req, res) => {
+    res.render("contact");
+});
+
+app.get("/shipping", (req, res) => {
+    res.render("shipping");
+});
+
+app.get("/terms", (req, res) => {
+    res.render("terms");
+});
+
+app.get("/refunds", (req, res) => {
+    res.render("refunds");
+});
+
+app.get("/privacy", (req, res) => {
+    res.render("privacy");
+});
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
