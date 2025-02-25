@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PayPal Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .product {
+            width: 45%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product h2 {
+            margin-top: 0;
+        }
+        .paypal-button {
+            margin-top: 10px;
+        }
+    </style>
 
     <!-- Add PayPal cart script -->
     <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
 </head>
 <body>
     <!-- View Cart button (usually at the top or navigation) -->
-    <div>
+    <div style="text-align: center;">
         <p>View Cart</p>
         <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
         <script>
@@ -18,28 +42,33 @@
         </script>
     </div>
 
-    <!-- Add to Cart button for Product 1 -->
-    <div>
-        <h2>Product 1</h2>
-        <p>Price: ₹5000</p>
-        <p>Click to add to cart</p>
+    <!-- Products container -->
+    <div class="product-container">
+        <!-- Product 1 -->
+        <div class="product">
+            <h2>Product 1</h2>
+            <p>Price: ₹5000</p>
+            <p>Click to add to cart</p>
+            <div class="paypal-button">
+                <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
+                <script>
+                  cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
+                </script>
+            </div>
+        </div>
 
-        <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
-        <script>
-          cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
-        </script>
-    </div>
-
-    <!-- Add to Cart button for Product 2 -->
-    <div>
-        <h2>Product 2</h2>
-        <p>Price: ₹10000</p>
-        <p>Click to add to cart</p>
-
-        <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
-        <script>
-          cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
-        </script>
+        <!-- Product 2 -->
+        <div class="product">
+            <h2>Product 2</h2>
+            <p>Price: ₹10000</p>
+            <p>Click to add to cart</p>
+            <div class="paypal-button">
+                <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
+                <script>
+                  cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
+                </script>
+            </div>
+        </div>
     </div>
 
 </body>
