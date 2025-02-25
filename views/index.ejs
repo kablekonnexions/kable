@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy Android TV Box</title>
-    <link rel="stylesheet" href="/style.css">
-    
-    <!-- PayPal SDK dynamically loaded -->
-    <script id="paypal-sdk" src=""></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayPal Integration</title>
+  <!-- Add PayPal cart script -->
+  <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
 </head>
 <body>
-
-    <h1>Android TV Box</h1>
-    <p>Price: ₹5000</p>
-
-    <!-- Add to Cart Button -->
-    <paypal-add-to-cart-button data-id="pp-add-to-cart"></paypal-add-to-cart-button>
-
-    <!-- View Cart Button -->
+  <!-- View Cart button (usually at the top or navigation) -->
+  <div class="view-cart">
     <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+    <script>
+      cartPaypal.Cart({ id: "pp-view-cart" });
+    </script>
+  </div>
 
-    <script src="/script.js"></script>
+  <!-- Product Section -->
+  <div class="product">
+    <h2>Product 1</h2>
+    <p>Description of product 1</p>
+    <p>Price: ₹1000</p>
+    
+    <!-- Add to Cart button for product 1 -->
+    <paypal-add-to-cart-button data-id="pp-add-to-cart-product-1"></paypal-add-to-cart-button>
+    <script>
+      cartPaypal.AddToCart({ id: "pp-add-to-cart-product-1" });
+    </script>
+  </div>
+
+  <div class="product">
+    <h2>Product 2</h2>
+    <p>Description of product 2</p>
+    <p>Price: ₹2000</p>
+    
+    <!-- Add to Cart button for product 2 -->
+    <paypal-add-to-cart-button data-id="pp-add-to-cart-product-2"></paypal-add-to-cart-button>
+    <script>
+      cartPaypal.AddToCart({ id: "pp-add-to-cart-product-2" });
+    </script>
+  </div>
+  
 </body>
 </html>
