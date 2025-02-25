@@ -7,6 +7,7 @@
 
     <!-- Add PayPal cart script -->
     <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
+
 </head>
 <body>
     <!-- View Cart button (usually at the top or navigation) -->
@@ -14,6 +15,7 @@
         <p>View Cart</p>
         <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
         <script>
+          // Initialize the cart with an empty state (no default product)
           cartPaypal.Cart({ id: "pp-view-cart" });
         </script>
     </div>
@@ -26,6 +28,7 @@
 
         <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
         <script>
+          // Only add Product 1 when the button is clicked
           cartPaypal.AddToCart({ id: "<%= PRODUCT_1_ID %>" });
         </script>
     </div>
@@ -38,6 +41,7 @@
 
         <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
         <script>
+          // Only add Product 2 when the button is clicked
           cartPaypal.AddToCart({ id: "<%= PRODUCT_2_ID %>" });
         </script>
     </div>
