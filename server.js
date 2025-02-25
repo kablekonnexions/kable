@@ -1,20 +1,16 @@
 const express = require('express');
 const path = require('path');
-const dotenv = require('dotenv');  // To load environment variables from .env
 const app = express();
-
-// Load environment variables from .env file
-dotenv.config();
 
 // Setup view engine and static files directory
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// PayPal Environment Variables
-const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID; // Set in Render or local .env file
-const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID; // Set in Render or local .env file
-const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID; // Set in Render or local .env file
+// PayPal Environment Variables (directly from Render environment)
+const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID; // Set in Render's environment variables
+const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID; // Set in Render's environment variables
+const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID; // Set in Render's environment variables
 
 // Route to render index page
 app.get('/', (req, res) => {
