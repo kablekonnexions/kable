@@ -1,22 +1,19 @@
 const express = require("express");
 const path = require("path");
-
 const app = express();
 
-// Set EJS as the template engine
+// Access the environment variable directly from Render
+const PAYPAL_MERCHANT_ID = process.env.PAYPAL_MERCHANT_ID;
+
+// Set up EJS view engine
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// Serve static files (CSS, JS)
-app.use(express.static("public"));
-
-// Define the home route to render `index.ejs`
+// Render the page with the PayPal Merchant ID
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("index", { PAYPAL_MERCHANT_ID });
 });
 
-// Use the Render-assigned port or default to 3000 (for local testing)
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
 });
