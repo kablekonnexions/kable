@@ -11,12 +11,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 const PRODUCT_1_ID = process.env.PAYPAL_PRODUCT_1_ID; // Set in Render or local .env file
 const PRODUCT_2_ID = process.env.PAYPAL_PRODUCT_2_ID; // Set in Render or local .env file
 
-// Route to render index page
+// Routes for the footer pages
 app.get('/', (req, res) => {
   res.render('index', {
     PRODUCT_1_ID: PRODUCT_1_ID,
     PRODUCT_2_ID: PRODUCT_2_ID
   });
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', { email: 'kablekonnexions@gmail.com' });
+});
+
+app.get('/shipping', (req, res) => {
+  res.render('shipping');
+});
+
+app.get('/terms', (req, res) => {
+  res.render('terms');
+});
+
+app.get('/refunds', (req, res) => {
+  res.render('refunds');
+});
+
+app.get('/privacy', (req, res) => {
+  res.render('privacy');
 });
 
 // Server configuration
