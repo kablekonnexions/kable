@@ -1,64 +1,25 @@
-/* Reset some basic styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Center content and add a background */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 0 20px;
-}
-
-/* Main container for the page */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Header styling */
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 18px;
-    color: #666;
-}
-
 /* Product container */
 .product {
-    display: inline-block; /* Changed to inline-block for side-by-side layout */
+    display: inline-block; /* Side-by-side layout */
     width: 45%; /* Adjusted width for better fit */
     margin: 20px 2.5%; /* Added margin for spacing between products */
-    padding: 20px;
+    padding: 0; /* Removed padding to fit within the box */
     text-align: center;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    vertical-align: top; /* Ensure vertical alignment */
 }
 
 /* Product box */
 .product-box {
-    width: 100%; /* Adjusted width to fit the product container */
-    height: auto; /* Adjusted height to fit content */
+    width: 100%; /* Full width of the product container */
     background-color: white;
-    box-shadow: none; /* Removed box-shadow */
-    border-radius: none; /* Removed border-radius */
-    display: block; /* Changed to block layout */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px; /* Added padding for content spacing */
+    overflow: hidden; /* Prevent content from overflowing */
 }
 
 /* Product image */
-.product-image {
+.product-box img {
     width: 100%;
     height: 200px; /* Adjusted height for better fit */
     object-fit: cover;
@@ -87,6 +48,8 @@ header p {
     color: #555;
     margin-bottom: 20px;
     word-wrap: break-word; /* Ensure text wraps to the next line */
+    max-height: 150px; /* Optional: Limit description height */
+    overflow-y: auto; /* Optional: Add scrollbar if needed */
 }
 
 /* Add to cart button */
@@ -103,37 +66,4 @@ header p {
 
 .add-to-cart:hover {
     background-color: #005f8a;
-}
-
-/* View Cart button */
-.view-cart {
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* Footer styles */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #222;
-    color: white;
-    margin-top: 50px;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Grey background sections */
-.grey-section {
-    background-color: #f4f4f4; /* Grey background */
-    padding: 10px; /* Adjust padding for content spacing */
-    margin-bottom: 10px; /* Adds spacing between sections */
 }
