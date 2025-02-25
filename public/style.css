@@ -37,9 +37,9 @@ header p {
 
 /* Product container */
 .product {
-    display: inline-block;
-    width: 45%;
-    margin: 20px 2.5%;
+    display: block; /* Changed from inline-block to block */
+    width: 80%; /* Adjusted width for better fit */
+    margin: 20px auto; /* Centered horizontally */
     padding: 20px;
     text-align: center;
     background-color: white;
@@ -49,11 +49,11 @@ header p {
 
 /* Product image */
 .product img {
-    width: 300px;
-    height: 300px;
+    width: 100%; /* Adjusted width to fit the product container */
+    height: 200px; /* Adjusted height for better fit */
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 20px; /* Added spacing below the image */
 }
 
 /* Product title */
