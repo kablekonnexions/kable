@@ -136,14 +136,14 @@
             <div class="paypal-button">
                 <paypal-add-to-cart-button data-id="<%= PRODUCT_1_ID %>"></paypal-add-to-cart-button>
                 <script>
-                    cartPaypal.AddToCart({ 
-                        id: "<%= PRODUCT_1_ID %>",
-                        onItemSelect: function(item) {
-                            const usdPrice = parseFloat(item.price);
-                            const inrPrice = convertUSDtoINR(usdPrice);
-                            document.getElementById('priceDisplay1').textContent = `Price: $${usdPrice.toFixed(2)} (₹${inrPrice})`;
-                        }
-                    });
+                 cartPaypal.AddToCart({ 
+    id: "<%= PRODUCT_1_ID %>",
+    onItemSelect: function(item) {
+        const usdPrice = parseFloat(item.price);
+        const inrPrice = convertUSDtoINR(usdPrice);
+        document.getElementById('priceDisplay1').textContent = `Price: $${usdPrice.toFixed(2)} (₹${inrPrice})`;
+    }
+});
                 </script>
             </div>
         </div>
@@ -157,14 +157,14 @@
             <div class="paypal-button">
                 <paypal-add-to-cart-button data-id="<%= PRODUCT_2_ID %>"></paypal-add-to-cart-button>
                 <script>
-                    cartPaypal.AddToCart({ 
-                        id: "<%= PRODUCT_2_ID %>",
-                        onItemSelect: function(item) {
-                            const usdPrice = parseFloat(item.price);
-                            const inrPrice = convertUSDtoINR(usdPrice);
-                            document.getElementById('priceDisplay2').textContent = `Price: $${usdPrice.toFixed(2)} (₹${inrPrice})`;
-                        }
-                    });
+                cartPaypal.AddToCart({ 
+    id: "<%= PRODUCT_2_ID %>",
+    onItemSelect: function(item) {
+        const usdPrice = parseFloat(item.price);
+        const inrPrice = convertUSDtoINR(usdPrice);
+        document.getElementById('priceDisplay2').textContent = `Price: $${usdPrice.toFixed(2)} (₹${inrPrice})`;
+    }
+});
                 </script>
             </div>
         </div>
