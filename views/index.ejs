@@ -99,14 +99,15 @@
     <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="<%= PAYPAL_MERCHANT_ID %>"></script>
 </head>
 <body>
-    <!-- Cart container at top right corner -->
-    <div class="cart-container">
-        <p>View Cart</p>
+<!-- Cart container at top right corner -->
+<div class="cart-container">
+    <div class="cart-button-container">
         <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
         <script>
           cartPaypal.Cart({ id: "pp-view-cart" });
         </script>
     </div>
+</div>
 
     <!-- Products container -->
     <div class="product-container">
